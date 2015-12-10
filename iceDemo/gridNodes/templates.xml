@@ -1,0 +1,17 @@
+<icegrid>
+    <application name="AppName">
+        <server-template id="ServerTemplate">
+            <parameter name="index"/>
+            <parameter name="exepath" default="./server"/>
+            <server id="ServerId${index}" exe="${exepath}" activation="on-demand">
+                <adapter name="PrinterAdapter" endpoints="tcp"/>
+            </server>
+        </server-template>
+        <node name="NodeiName1">
+            <server-instance template="ServerTemplate" index="1"/>
+        </node>
+        <node name="NodeName2">
+            <server-instance template="ServerTemplate" index="2" exepath="./server"/>
+        </node>
+    </application>
+</icegrid>
