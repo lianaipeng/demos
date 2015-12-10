@@ -1,0 +1,9 @@
+# executable:
+hello
+server 
+client
+
+# lib file: 
+*.a
+*.so
+
