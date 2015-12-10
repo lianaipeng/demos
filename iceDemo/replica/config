@@ -1,0 +1,15 @@
+# Register properties
+IceGrid.Registry.Client.Endpoints=tcp -p 4061
+IceGrid.Registry.Server.Endpoints=tcp
+IceGrid.Registry.Internal.Endpoints=tcp
+IceGrid.Registry.AdminPermissionsVerifier=IceGrid/NullPermissionsVerifier
+IceGrid.Registry.Data=./registry
+
+
+# Node properties 
+IceGrid.Node.Endpoints=tcp
+IceGrid.Node.Name=Node1
+IceGrid.Node.Data=./node
+IceGrid.Node.CollocateRegistry=1
+Ice.Default.Locator=IceGrid/Locator:tcp -p 4061
+
