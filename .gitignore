@@ -2,6 +2,7 @@
 hello
 server 
 client
+a.out
 
 # lib file: 
 *.a
