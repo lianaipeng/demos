@@ -6,4 +6,4 @@ client
 # lib file: 
 *.a
 *.so
-
+*.o
