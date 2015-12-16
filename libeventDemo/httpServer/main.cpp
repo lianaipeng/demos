@@ -73,6 +73,7 @@ void post_handle(struct evhttp_request *req,void *arg){
         struct evbuffer * evcontent = evhttp_request_get_input_buffer(req);
         // 获取缓冲区大小
         int content_length = evbuffer_get_length(evcontent);
+        request_buff.resize(content_length);
         
         // 读取缓冲区中的数据(缓冲区不清空) -1表示全部
         memcpy(&request_buff[0], evbuffer_pullup(evcontent, -1), content_length);
