@@ -16,7 +16,6 @@ int main(int argc,char **argv){
         else
             adapter = "ServerId2.PrinterAdapter";
 
-        adapter = "ServerId1.PrinterAdapter";
         cout << adapter << endl;
 
         ic = Ice::initialize(argc,argv);

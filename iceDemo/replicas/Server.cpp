@@ -10,7 +10,8 @@ public:
 };
 
 void PrinterI::printString(const string&s,const Ice::Current&){
-    cout << s << endl;
+    cout << "new application:" <<  s << endl;
+    //cout << s << endl;
 }
 
 
@@ -22,7 +23,7 @@ int main(int argc,char *argv[]){
         //Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints("PrinterAdapter", "default -p 10001");
         Ice::ObjectAdapterPtr adapter = ic->createObjectAdapter("PrinterAdapter");
         Ice::ObjectPtr object = new PrinterI;
-
+    
         adapter->add(object,ic->stringToIdentity("Printer"));
         adapter->activate();
         ic->waitForShutdown();

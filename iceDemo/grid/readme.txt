@@ -1,9 +1,9 @@
 
-
 make clean
 make
 
-mkdir registry
-icegridregistry --Ice.Config=registry.cfg
-./server --Ice.Config=server.cfg
-./client --Ice.Config=client.cfg
+mkdir -p /data/registry
+icegridregistry --Ice.Config=config/registry.cfg
+./server --Ice.Config=config/server.cfg
+./client --Ice.Config=config/client.cfg
+

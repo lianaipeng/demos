@@ -1,0 +1,14 @@
+<icegrid>
+    <application name="AppName">
+        <node name="NodeName1">
+            <server id="ServerId1" exe="./server" activation="always">
+                <adapter name="PrinterAdapter" endpoints="tcp"/>
+            </server>
+        </node>
+        <node name="NodeName2">
+            <server id="ServerId2" exe="./server" activation="on-demand">
+                <adapter name="PrinterAdapter" endpoints="tcp"/>
+            </server>
+        </node>
+    </application>
+</icegrid>
