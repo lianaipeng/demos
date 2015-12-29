@@ -1,4 +1,6 @@
-all: slice server client
+all: envir slice server client
+envir:
+	mkdir -p data/registry data/replica1 data/node1 data/node2
 slice:
 	slice2cpp --underscore Printer.ice
 client:
