@@ -35,6 +35,7 @@ int main(int argc, char **argv) {
     boost::shared_ptr<TSocket> socket(new TSocket("localhost", 19090));  
     boost::shared_ptr<TTransport> transport(new TBufferedTransport(socket));  
     boost::shared_ptr<TProtocol> protocol(new TBinaryProtocol(transport));  
+    // 只需要改动客户端名字即可
     TTGServiceClient  client(protocol);
 
     //设置发送、接收、连接超时
@@ -42,18 +43,18 @@ int main(int argc, char **argv) {
     socket->setRecvTimeout(2000);
     socket->setSendTimeout(2000);
     transport->open();  
+    
 
+	// 我们的代码写在这里  
     Request request;
     request.studentId = 10;
-
     Response _return;
-
     //void getStudentInfo(Response& _return, const Request& request) 
     client.getStudentInfo(_return,request); 
     //printf("studentId:%d\n",_return.studentId);
 	std::cout << "studentId:" << _return.studentId << ",name:" << _return.name << std::endl;
 
-	// 我们的代码写在这里  
+    
 	transport->close();  
 
 	return 0;
