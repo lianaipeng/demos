@@ -1,0 +1,17 @@
+
+
+hello : hello.o head1.o child.o parent.o
+	gcc -o hello hello.o head1.o child.o parent.o
+
+hello.o : hello.c
+	gcc -c hello.c
+head1.o : head1.c head1.h
+	gcc -c head1.c
+child.o : child.c child.h  parent.h 
+	gcc -c child.c
+parent.o : parent.c 
+	gcc -c parent.c
+
+clean:
+	rm hello hello.o head1.o child.o parent.o
+

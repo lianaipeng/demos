@@ -1,0 +1,24 @@
+
+TARGET = hello 
+ROOT_DIR = $(shell pwd)
+COMMON_DIR = $(ROOT_DIR)/common
+
+all : common $(TARGET)
+
+common:
+	mkdir common
+	cd $(COMMON_DIR) 
+	touch $(COMMON_DIR)/makefile
+	@echo "hello" >>
+$(COMMON_DIR)/makefile
+
+
+objects = hello.o head1.o child.o parent.o
+
+hello:$(objects)
+	gcc -o hello $(objects)
+
+.PHONY:clean
+clean:
+	-rm hello $(objects)
+

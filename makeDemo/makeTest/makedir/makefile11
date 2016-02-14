@@ -1,0 +1,14 @@
+
+hello: common/hello.o common/head1.o 
+	gcc -o hello common/hello.o common/head1.o
+
+common/hello.o : hello.c head1.h
+	gcc -c -o common/hello.o hello.c
+common/head1.o : head1.c head1.h
+	gcc -c -o common/head1.o head1.c
+
+
+.PHONY:clean
+clean:
+	-rm hello common/hello.o common/head1.o 
+
