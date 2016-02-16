@@ -13,9 +13,11 @@ int main(){
     const std::string tmp_hkey = "test_hkey";
     
     std::string redis_addr = "127.0.0.1:6380";
+    // 初始化redis连接池
     ret = RedisClient::init_pool(redis_addr);
     std::cout << "RedisClient::init_pool ret:" << ret << std::endl;
 
+    // 使用redis链接
     RedisClient redis;
     RedisUtil::set(redis,tmp_key,"isok?");
     ret = RedisUtil::type(redis,tmp_key);
@@ -28,6 +30,7 @@ int main(){
     ret = RedisUtil::type(redis,tmp_zkey);
     std::cout << "############## zset ret:" << ret << std::endl;
     
+    // 销毁redis连接池
     RedisClient::release_pool();
     return 0;
 }

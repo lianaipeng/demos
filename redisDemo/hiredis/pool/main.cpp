@@ -1,15 +1,58 @@
 
 #include "redis_pool.h"
+#include "redis_util.h"
 #include <iostream>
+#include <pthread.h>
+#include <unistd.h>
 
+RedisPool *g_pool;
 
-int main(){
-    RedisClient client((char *)"127.0.0.1",6389,10000);
-    std::string cmd = "set test hello";
-    std::string res;
-    bool ret = client.executeCommand(cmd.c_str(),cmd.size(),res);
-    std::cout << "cmd:" << cmd << " cmd.size():" << cmd.size()<< " ret:" << ret << " res:" <<  res << std::endl;
+void* monitor_control_fn1(void *){
+    std::cout << " in pthread1"  << std::endl;
+
+    sleep(1);
+    redisContext* conn = g_pool->getContext();
+    std::string tmpKey = "poolset1";
+    setRedisString(conn,tmpKey,"poolhello1");
+
+    std::string  _return="";
+    getRedisString(conn,tmpKey,_return);
+    std::cout << "######## _return:" << _return << std::endl; 
+    g_pool->delContext(conn,true);
     
+}
+void* monitor_control_fn2(void *){
+    std::cout << " in pthread2"  << std::endl;
+
+    sleep(2);
+    redisContext* conn = g_pool->getContext();
+    std::string tmpKey = "poolset2";
+    setRedisString(conn,tmpKey,"poolhello2");
+
+    std::string  _return="";
+    getRedisString(conn,tmpKey,_return);
+    std::cout << "######## _return:" << _return << std::endl; 
+    g_pool->delContext(conn,true);
+    
+}
+int main(){
+    g_pool = new RedisPool((char *)"192.168.1.224",6380,5000);
+
+    pthread_t pth;
+    //int err = pthread_create(&pth,NULL,(void *)monitor_control_fn(void *),(void *)NULL);
+    int err = pthread_create(&pth,NULL,monitor_control_fn1,(void *)NULL);
+    if(err != 0){ 
+        fprintf(stderr,"%s\n",strerror(err));
+    } 
+    err = pthread_create(&pth,NULL,monitor_control_fn2,(void *)NULL);
+    if(err != 0){ 
+        fprintf(stderr,"%s\n",strerror(err));
+    } 
+    sleep(3);
+    
+    if(g_pool != NULL)
+        delete g_pool;
+
     /*
 	//redisContext* conn = redisConnect((char *)"192.168.1.226",6379); 
 	redisContext* conn = redisConnect((char *)"127.0.0.1",6389); 

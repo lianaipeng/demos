@@ -1,7 +1,7 @@
 
 #include "redis_pool.h"
 
-RedisClient::RedisClient(string ip, int port, int timeout)  
+RedisPool::RedisPool(string ip, int port, int timeout)  
 {  
     m_timeout = timeout;  
     m_serverPort = port;  
@@ -9,7 +9,7 @@ RedisClient::RedisClient(string ip, int port, int timeout)
 
     //m_beginInvalidTime = 0;  
 }
-RedisClient::~RedisClient()
+RedisPool::~RedisPool()
 {
     while(!m_clients.empty()){  
         redisContext *ctx = m_clients.front();  
@@ -17,7 +17,7 @@ RedisClient::~RedisClient()
         m_clients.pop();  
     } 
 }
-redisContext* RedisClient::createContext()
+redisContext* RedisPool::getContext()
 {
     if(!m_clients.empty()){
         redisContext *ctx = m_clients.front(); 
@@ -35,10 +35,11 @@ redisContext* RedisClient::createContext()
             redisFree(ctx);
         return NULL;
     }
+    std::cout << "m_clients.size():" << m_clients.size() << std::endl;
     
     return ctx;       
 }
-void RedisClient::releaseContext(redisContext* ctx,bool active)
+void RedisPool::delContext(redisContext* ctx,bool active)
 {
     if(ctx == NULL)
         return;
@@ -48,49 +49,7 @@ void RedisClient::releaseContext(redisContext* ctx,bool active)
         return;
     }
     m_clients.push(ctx);
+    std::cout << "m_clients.size():" << m_clients.size() << std::endl;
 }
-// private 
-redisReply* RedisClient::executeCommand(const char* cmd, size_t len)
-{
-    redisContext *ctx = createContext();  
-    if(ctx == NULL) 
-        return NULL; 
-    
-    //redisReply *reply = (redisReply*)redisCommand(ctx, "%b", cmd, len); 
-    redisReply *reply = (redisReply*)redisCommand(ctx, "%b", cmd); 
-     
-    releaseContext(ctx, reply != NULL);
-    return reply;
 
-}
-// public 
-bool RedisClient::executeCommand(const char* cmd, size_t len, string& res)
-{
-    redisReply *reply = executeCommand(cmd, len);        
-    if(reply == NULL)
-        return false;
 
-    //boost::shared_ptr<redisReply> autoFree(reply, freeReplyObject); 
-    if (reply->type == REDIS_REPLY_INTEGER) {  
-        res = IntToString(reply->integer);  
-        return true;  
-    } else if(reply->type == REDIS_REPLY_STRING) {  
-        res.assign(reply->str, reply->len);  
-        return true;  
-    } else if(reply->type == REDIS_REPLY_STATUS) {  
-        res.assign(reply->str, reply->len);  
-        return true;  
-    } else if(reply->type == REDIS_REPLY_NIL) {  
-        res = "";  
-        return true;  
-    } else if(reply->type == REDIS_REPLY_ERROR) {  
-        res.assign(reply->str, reply->len);  
-        return false;  
-    } else if(reply->type == REDIS_REPLY_ARRAY) {  
-        res = "Not Support Array Result!!!";  
-        return false;  
-    } else {  
-        res = "Undefine Reply Type";  
-        return false;  
-    } 
-} 
