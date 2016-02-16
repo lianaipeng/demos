@@ -7,4 +7,4 @@
 # gridNodes : ice 双节点，单registry，admin启动
 # replicas  : ice 双节点，双registry，admin启动
 
-# ami       : ice 异步接口回调（回调client方法）
+# ami       : ice 异步接口回调（回调client方法）（暂不可用）
