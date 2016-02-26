@@ -17,6 +17,7 @@ int getRedisKeys(redisContext* conn,const std::string key,std::set<std::string>&
 int getRedisScan(redisContext* conn,const char* match, std::set<std::string>& _return);
 int getRedisKeyType(redisContext* conn,const std::string key);
 int expireRedisKey(redisContext* conn,const std::string key,const int time);
+int ttlRedisKey(redisContext* conn,const std::string key);
 int delRedisKey(redisContext* conn,const std::string key);
 int existsRedisKey(redisContext* conn,const std::string key);
 

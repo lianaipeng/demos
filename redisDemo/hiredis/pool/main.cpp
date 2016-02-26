@@ -13,7 +13,15 @@ void* monitor_control_fn1(void *){
     sleep(1);
     redisContext* conn = g_pool->getContext();
     std::string tmpKey = "poolset1";
+    
+    std::cout<< "expire:" << existsRedisKey(conn,"nokey") << std::endl;
+
     setRedisString(conn,tmpKey,"poolhello1");
+    std::cout<< "expire:" << existsRedisKey(conn,tmpKey) << std::endl;
+
+    expireRedisKey(conn,tmpKey,10000); 
+    std::cout << "ttl:" << ttlRedisKey(conn,tmpKey) << std::endl;
+
 
     std::string  _return="";
     getRedisString(conn,tmpKey,_return);

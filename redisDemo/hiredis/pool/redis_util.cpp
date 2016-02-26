@@ -87,6 +87,18 @@ int expireRedisKey(redisContext* conn,const std::string key,const int time)
     freeReplyObject(reply); 
     return 1;
 }
+int ttlRedisKey(redisContext* conn,const std::string key)
+{
+    redisReply* reply = (redisReply*)redisCommand(conn,"ttl %s",key.c_str());
+    if(NULL == reply){
+        //BLT_D << "reply error";
+        return -1;
+    }
+
+    int count = reply->type == REDIS_REPLY_INTEGER ? reply->integer : 0;
+    freeReplyObject(reply); 
+    return count;
+}
 
 int delRedisKey(redisContext* conn,const std::string key)
 {
@@ -113,15 +125,10 @@ int existsRedisKey(redisContext* conn,const std::string key)
         //BLT_D << "reply error";
         return -1;
     }
-
-    if(reply->type == REDIS_REPLY_INTEGER){
-        freeReplyObject(reply); 
-        return 0;
-    }
+    int count = reply->type == REDIS_REPLY_INTEGER ? reply->integer : -1;
     
     freeReplyObject(reply); 
-    return 1;
-    
+    return count;
 }
 
 int renameRedisSet(redisContext* conn,const std::string key,const std::string newkey)
