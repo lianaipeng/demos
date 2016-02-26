@@ -13,17 +13,11 @@ struct compare
 {
     bool operator () (P p1,P p2){
         if(p1.name < p2.name){
-            return p1.rp < p2.rp;
-            /*
-            if(p1.rp < p2.rp){
-                //return p1.name < p2.name;
-                return true;
-            }else{
-                return false;
-            }
-            */
+            return true;
+            //return p1.rp < p2.rp;
         } else {
-            return p1.rp < p2.rp;
+            return false;
+            //return p1.rp < p2.rp;
         }
     }
 };
@@ -46,7 +40,7 @@ int main()
     multiset<P,compare>::iterator iter= multiSet.begin();
     while(iter!=multiSet.end())
     {
-        std::cout << " rp:" <<iter->rp << ",name:" << iter->name << std::endl;
+        std::cout <<  "name:" << iter->name << ",rp:" <<iter->rp <<std::endl;
         iter++;
     }
 
