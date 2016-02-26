@@ -13,13 +13,16 @@ int main(int argc,char **argv){
     
     Json::Value arrayObj;   // 构建对象  
     Json::Value item1, item2;  
-    // item1["item1"] = "item1";  
-    // item2["item2"] = "item2"; 
-    // arrayObj.append(item1);  // 插入数组成员  
-    // arrayObj.append(item2);
+    item1["item1"] = "item1";  
+    item2["item2"] = "item2"; 
+  //  arrayObj[0] = item1;
+  //  arrayObj[1] = item2;
+     arrayObj.append(item1);  // 插入数组成员  
+     arrayObj.append(item2);
+    /*
     arrayObj.append("item1");
     arrayObj.append("item2");
-
+    */
     rootObj["array"] = arrayObj;
 
     // 输出无格式json字符串  
