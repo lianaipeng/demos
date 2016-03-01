@@ -1,5 +1,6 @@
 
 ###### step by step ######
+Ice-3.6.1 
 
 # hello     : ice 入门
 # grid      : ice 单节点，单registry，手动启动
