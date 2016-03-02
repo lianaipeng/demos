@@ -1,0 +1,11 @@
+<icegrid>
+    <application name="AppName">
+        <node name="NodeName">
+            <server id="ServerId" exe="./forum_server" activation="on-demand">
+                <adapter name="Adapter" id="Adapter" endpoints="tcp"/>
+                <property name="Ice.Trace.Network" value="1"/>
+                <option></option>
+            </server>
+        </node>
+    </application>
+</icegrid>

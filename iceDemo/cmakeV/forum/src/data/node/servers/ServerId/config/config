@@ -1,0 +1,12 @@
+# Configuration file (03/02/16 22:19:55.616)
+
+# Server configuration
+Ice.Admin.ServerId=ServerId
+Ice.Admin.Endpoints=tcp -h localhost
+Ice.ProgramName=ServerId
+# Object adapter Adapter
+Adapter.Endpoints=tcp
+Adapter.AdapterId=Adapter
+# Server descriptor properties
+Ice.Trace.Network=1
+Ice.Default.Locator=IceGrid/Locator:tcp -p 50612

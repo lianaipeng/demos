@@ -7,9 +7,13 @@ int main(int argc ,char* argv[]){
     Ice::CommunicatorPtr ic;
     try{
         ic = Ice::initialize(argc, argv);
-        Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints("SimpleForumAdapter", "default -p 10001");
+        //Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints("SimpleForumAdapter", "default -p 10001");
+        // Adapter Name
+        Ice::ObjectAdapterPtr adapter = ic->createObjectAdapter("Adapter");
         Ice::ObjectPtr object = new ForumI;
 
+        //adapter->add(object,ic->stringToIdentity("SimpleForum"));
+        // Object identity
         adapter->add(object,ic->stringToIdentity("SimpleForum"));
         adapter->activate();
         ic->waitForShutdown();

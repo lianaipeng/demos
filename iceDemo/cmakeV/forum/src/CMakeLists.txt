@@ -1,5 +1,5 @@
 
-message("######################## ${PROJECT_SOURCE_DIR}/interface/")
+message(" src ###### ${PROJECT_SOURCE_DIR}/interface/")
 # 源文件
 set(FORUM_SERVER_SRC
     main.cpp ../interface/Forum.h ../interface/Forum.cpp ForumI.h ForumI.cpp
