@@ -9,12 +9,12 @@ int main(int argc ,char* argv[]){
         ic = Ice::initialize(argc, argv);
         //Ice::ObjectAdapterPtr adapter = ic->createObjectAdapterWithEndpoints("SimpleForumAdapter", "default -p 10001");
         // Adapter Name
-        Ice::ObjectAdapterPtr adapter = ic->createObjectAdapter("Adapter");
+        Ice::ObjectAdapterPtr adapter = ic->createObjectAdapter("ForumAdapter");
         Ice::ObjectPtr object = new ForumI;
 
         //adapter->add(object,ic->stringToIdentity("SimpleForum"));
         // Object identity
-        adapter->add(object,ic->stringToIdentity("SimpleForum"));
+        adapter->add(object,ic->stringToIdentity("ForumObjectId"));
         adapter->activate();
         ic->waitForShutdown();
     } catch(const Ice::Exception& e) {

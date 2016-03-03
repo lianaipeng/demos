@@ -1,9 +1,10 @@
 <icegrid>
-    <application name="AppName">
-        <node name="NodeName">
-            <server id="ServerId" exe="./forum_server" activation="on-demand">
-                <adapter name="Adapter" id="Adapter" endpoints="tcp"/>
+    <application name="ForumAppName">
+        <node name="ForumNodeName">
+            <server id="ForumServerId" exe="./forum_server" activation="on-demand">
+                <adapter name="ForumAdapter" id="ForumAdapter" endpoints="tcp"/>
                 <property name="Ice.Trace.Network" value="1"/>
+                <option>./config/dev.ini</option>
             </server>
         </node>
     </application>
