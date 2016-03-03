@@ -2,6 +2,10 @@
 
 rm -rf data/registry/*
 rm -rf data/node/*
+rm -rf data/log/*
+mkdir -p data/registry/
+mkdir -p data/node/
+mkdir -p data/log/
 
 nohup icegridregistry --Ice.Config=./config/forum_registry.conf &
 sleep 3
