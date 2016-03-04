@@ -13,5 +13,6 @@ module Demo{
         void printString(string s);
         int getInt(string s);
         int getNumber(MStruct stru);
+        //int getNumber(out MStruct stru);
     };
 };

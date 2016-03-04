@@ -45,6 +45,12 @@ namespace
 
 const ::std::string __Forum__ForumInterface__sayHello_name = "sayHello";
 
+const ::std::string __Forum__ForumInterface__getUserInfo_name = "getUserInfo";
+
+}
+
+namespace Ice
+{
 }
 ::IceProxy::Ice::Object* ::IceProxy::Forum::upCast(::IceProxy::Forum::ForumInterface* p) { return p; }
 
@@ -104,6 +110,121 @@ void
 IceProxy::Forum::ForumInterface::end_sayHello(const ::Ice::AsyncResultPtr& __result)
 {
     __end(__result, __Forum__ForumInterface__sayHello_name);
+}
+
+void
+IceProxy::Forum::ForumInterface::getUserInfo(::Ice::Int __p_id, ::Forum::UserInfo& __p_user_info, const ::Ice::Context* __ctx)
+{
+    __checkTwowayOnly(__Forum__ForumInterface__getUserInfo_name);
+    ::IceInternal::Outgoing __og(this, __Forum__ForumInterface__getUserInfo_name, ::Ice::Normal, __ctx);
+    try
+    {
+        ::IceInternal::BasicStream* __os = __og.startWriteParams(::Ice::DefaultFormat);
+        __os->write(__p_id);
+        __og.endWriteParams();
+    }
+    catch(const ::Ice::LocalException& __ex)
+    {
+        __og.abort(__ex);
+    }
+    if(!__og.invoke())
+    {
+        try
+        {
+            __og.throwUserException();
+        }
+        catch(const ::Ice::UserException& __ex)
+        {
+            ::Ice::UnknownUserException __uue(__FILE__, __LINE__, __ex.ice_name());
+            throw __uue;
+        }
+    }
+    ::IceInternal::BasicStream* __is = __og.startReadParams();
+    __is->read(__p_user_info);
+    __og.endReadParams();
+}
+
+::Ice::AsyncResultPtr
+IceProxy::Forum::ForumInterface::begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context* __ctx, const ::IceInternal::CallbackBasePtr& __del, const ::Ice::LocalObjectPtr& __cookie)
+{
+    __checkAsyncTwowayOnly(__Forum__ForumInterface__getUserInfo_name);
+    ::IceInternal::OutgoingAsyncPtr __result = new ::IceInternal::OutgoingAsync(this, __Forum__ForumInterface__getUserInfo_name, __del, __cookie);
+    try
+    {
+        __result->prepare(__Forum__ForumInterface__getUserInfo_name, ::Ice::Normal, __ctx);
+        ::IceInternal::BasicStream* __os = __result->startWriteParams(::Ice::DefaultFormat);
+        __os->write(__p_id);
+        __result->endWriteParams();
+        __result->invoke();
+    }
+    catch(const ::Ice::Exception& __ex)
+    {
+        __result->abort(__ex);
+    }
+    return __result;
+}
+
+#ifdef ICE_CPP11
+
+::Ice::AsyncResultPtr
+IceProxy::Forum::ForumInterface::__begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context* __ctx, const ::IceInternal::Function<void (const ::Forum::UserInfo&)>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception, const ::IceInternal::Function<void (bool)>& __sent)
+{
+    class Cpp11CB : public ::IceInternal::Cpp11FnCallbackNC
+    {
+    public:
+
+        Cpp11CB(const ::std::function<void (const ::Forum::UserInfo&)>& responseFunc, const ::std::function<void (const ::Ice::Exception&)>& exceptionFunc, const ::std::function<void (bool)>& sentFunc) :
+            ::IceInternal::Cpp11FnCallbackNC(exceptionFunc, sentFunc),
+            _response(responseFunc)
+        {
+            CallbackBase::checkCallback(true, responseFunc || exceptionFunc != nullptr);
+        }
+
+        virtual void completed(const ::Ice::AsyncResultPtr& __result) const
+        {
+            ::Forum::ForumInterfacePrx __proxy = ::Forum::ForumInterfacePrx::uncheckedCast(__result->getProxy());
+            ::Forum::UserInfo __p_user_info;
+            try
+            {
+                __proxy->end_getUserInfo(__p_user_info, __result);
+            }
+            catch(const ::Ice::Exception& ex)
+            {
+                Cpp11FnCallbackNC::exception(__result, ex);
+                return;
+            }
+            if(_response != nullptr)
+            {
+                _response(__p_user_info);
+            }
+        }
+    
+    private:
+        
+        ::std::function<void (const ::Forum::UserInfo&)> _response;
+    };
+    return begin_getUserInfo(__p_id, __ctx, new Cpp11CB(__response, __exception, __sent));
+}
+#endif
+
+void
+IceProxy::Forum::ForumInterface::end_getUserInfo(::Forum::UserInfo& __p_user_info, const ::Ice::AsyncResultPtr& __result)
+{
+    ::Ice::AsyncResult::__check(__result, this, __Forum__ForumInterface__getUserInfo_name);
+    if(!__result->__wait())
+    {
+        try
+        {
+            __result->__throwUserException();
+        }
+        catch(const ::Ice::UserException& __ex)
+        {
+            throw ::Ice::UnknownUserException(__FILE__, __LINE__, __ex.ice_name());
+        }
+    }
+    ::IceInternal::BasicStream* __is = __result->__startReadParams();
+    __is->read(__p_user_info);
+    __result->__endReadParams();
 }
 
 const ::std::string&
@@ -172,10 +293,27 @@ Forum::ForumInterface::___sayHello(::IceInternal::Incoming& __inS, const ::Ice::
     return ::Ice::DispatchOK;
 }
 
+::Ice::DispatchStatus
+Forum::ForumInterface::___getUserInfo(::IceInternal::Incoming& __inS, const ::Ice::Current& __current)
+{
+    __checkMode(::Ice::Normal, __current.mode);
+    ::IceInternal::BasicStream* __is = __inS.startReadParams();
+    ::Ice::Int __p_id;
+    __is->read(__p_id);
+    __inS.endReadParams();
+    ::Forum::UserInfo __p_user_info;
+    getUserInfo(__p_id, __p_user_info, __current);
+    ::IceInternal::BasicStream* __os = __inS.__startWriteParams(::Ice::DefaultFormat);
+    __os->write(__p_user_info);
+    __inS.__endWriteParams(true);
+    return ::Ice::DispatchOK;
+}
+
 namespace
 {
 const ::std::string __Forum__ForumInterface_all[] =
 {
+    "getUserInfo",
     "ice_id",
     "ice_ids",
     "ice_isA",
@@ -188,7 +326,7 @@ const ::std::string __Forum__ForumInterface_all[] =
 ::Ice::DispatchStatus
 Forum::ForumInterface::__dispatch(::IceInternal::Incoming& in, const ::Ice::Current& current)
 {
-    ::std::pair< const ::std::string*, const ::std::string*> r = ::std::equal_range(__Forum__ForumInterface_all, __Forum__ForumInterface_all + 5, current.operation);
+    ::std::pair< const ::std::string*, const ::std::string*> r = ::std::equal_range(__Forum__ForumInterface_all, __Forum__ForumInterface_all + 6, current.operation);
     if(r.first == r.second)
     {
         throw ::Ice::OperationNotExistException(__FILE__, __LINE__, current.id, current.facet, current.operation);
@@ -198,21 +336,25 @@ Forum::ForumInterface::__dispatch(::IceInternal::Incoming& in, const ::Ice::Curr
     {
         case 0:
         {
-            return ___ice_id(in, current);
+            return ___getUserInfo(in, current);
         }
         case 1:
         {
-            return ___ice_ids(in, current);
+            return ___ice_id(in, current);
         }
         case 2:
         {
-            return ___ice_isA(in, current);
+            return ___ice_ids(in, current);
         }
         case 3:
         {
-            return ___ice_ping(in, current);
+            return ___ice_isA(in, current);
         }
         case 4:
+        {
+            return ___ice_ping(in, current);
+        }
+        case 5:
         {
             return ___sayHello(in, current);
         }

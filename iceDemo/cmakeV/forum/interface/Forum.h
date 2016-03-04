@@ -78,8 +78,113 @@ void __patch(ForumInterfacePtr&, const ::Ice::ObjectPtr&);
 namespace Forum
 {
 
+struct UserInfo
+{
+    ::Ice::Int id;
+    ::std::string name;
+
+    bool operator==(const UserInfo& __rhs) const
+    {
+        if(this == &__rhs)
+        {
+            return true;
+        }
+        if(id != __rhs.id)
+        {
+            return false;
+        }
+        if(name != __rhs.name)
+        {
+            return false;
+        }
+        return true;
+    }
+
+    bool operator<(const UserInfo& __rhs) const
+    {
+        if(this == &__rhs)
+        {
+            return false;
+        }
+        if(id < __rhs.id)
+        {
+            return true;
+        }
+        else if(__rhs.id < id)
+        {
+            return false;
+        }
+        if(name < __rhs.name)
+        {
+            return true;
+        }
+        else if(__rhs.name < name)
+        {
+            return false;
+        }
+        return false;
+    }
+
+    bool operator!=(const UserInfo& __rhs) const
+    {
+        return !operator==(__rhs);
+    }
+    bool operator<=(const UserInfo& __rhs) const
+    {
+        return operator<(__rhs) || operator==(__rhs);
+    }
+    bool operator>(const UserInfo& __rhs) const
+    {
+        return !operator<(__rhs) && !operator==(__rhs);
+    }
+    bool operator>=(const UserInfo& __rhs) const
+    {
+        return !operator<(__rhs);
+    }
+};
+
+}
+
+namespace Ice
+{
+template<>
+struct StreamableTraits< ::Forum::UserInfo>
+{
+    static const StreamHelperCategory helper = StreamHelperCategoryStruct;
+    static const int minWireSize = 5;
+    static const bool fixedLength = false;
+};
+
+template<class S>
+struct StreamWriter< ::Forum::UserInfo, S>
+{
+    static void write(S* __os, const ::Forum::UserInfo& v)
+    {
+        __os->write(v.id);
+        __os->write(v.name);
+    }
+};
+
+template<class S>
+struct StreamReader< ::Forum::UserInfo, S>
+{
+    static void read(S* __is, ::Forum::UserInfo& v)
+    {
+        __is->read(v.id);
+        __is->read(v.name);
+    }
+};
+
+}
+
+namespace Forum
+{
+
 class Callback_ForumInterface_sayHello_Base : virtual public ::IceInternal::CallbackBase { };
 typedef ::IceUtil::Handle< Callback_ForumInterface_sayHello_Base> Callback_ForumInterface_sayHelloPtr;
+
+class Callback_ForumInterface_getUserInfo_Base : virtual public ::IceInternal::CallbackBase { };
+typedef ::IceUtil::Handle< Callback_ForumInterface_getUserInfo_Base> Callback_ForumInterface_getUserInfoPtr;
 
 }
 
@@ -160,6 +265,82 @@ private:
 
     void sayHello(const ::std::string&, const ::Ice::Context*);
     ::Ice::AsyncResultPtr begin_sayHello(const ::std::string&, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
+    
+public:
+
+    void getUserInfo(::Ice::Int __p_id, ::Forum::UserInfo& __p_user_info)
+    {
+        getUserInfo(__p_id, __p_user_info, 0);
+    }
+    void getUserInfo(::Ice::Int __p_id, ::Forum::UserInfo& __p_user_info, const ::Ice::Context& __ctx)
+    {
+        getUserInfo(__p_id, __p_user_info, &__ctx);
+    }
+#ifdef ICE_CPP11
+    ::Ice::AsyncResultPtr
+    begin_getUserInfo(::Ice::Int __p_id, const ::IceInternal::Function<void (const ::Forum::UserInfo&)>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return __begin_getUserInfo(__p_id, 0, __response, __exception, __sent);
+    }
+    ::Ice::AsyncResultPtr
+    begin_getUserInfo(::Ice::Int __p_id, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_getUserInfo(__p_id, 0, ::Ice::newCallback(__completed, __sent), 0);
+    }
+    ::Ice::AsyncResultPtr
+    begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context& __ctx, const ::IceInternal::Function<void (const ::Forum::UserInfo&)>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception = ::IceInternal::Function<void (const ::Ice::Exception&)>(), const ::IceInternal::Function<void (bool)>& __sent = ::IceInternal::Function<void (bool)>())
+    {
+        return __begin_getUserInfo(__p_id, &__ctx, __response, __exception, __sent);
+    }
+    ::Ice::AsyncResultPtr
+    begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context& __ctx, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __completed, const ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>& __sent = ::IceInternal::Function<void (const ::Ice::AsyncResultPtr&)>())
+    {
+        return begin_getUserInfo(__p_id, &__ctx, ::Ice::newCallback(__completed, __sent));
+    }
+    
+private:
+
+    ::Ice::AsyncResultPtr __begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context* __ctx, const ::IceInternal::Function<void (const ::Forum::UserInfo&)>& __response, const ::IceInternal::Function<void (const ::Ice::Exception&)>& __exception, const ::IceInternal::Function<void (bool)>& __sent);
+    
+public:
+#endif
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id)
+    {
+        return begin_getUserInfo(__p_id, 0, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context& __ctx)
+    {
+        return begin_getUserInfo(__p_id, &__ctx, ::IceInternal::__dummyCallback, 0);
+    }
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getUserInfo(__p_id, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context& __ctx, const ::Ice::CallbackPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getUserInfo(__p_id, &__ctx, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id, const ::Forum::Callback_ForumInterface_getUserInfoPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getUserInfo(__p_id, 0, __del, __cookie);
+    }
+
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int __p_id, const ::Ice::Context& __ctx, const ::Forum::Callback_ForumInterface_getUserInfoPtr& __del, const ::Ice::LocalObjectPtr& __cookie = 0)
+    {
+        return begin_getUserInfo(__p_id, &__ctx, __del, __cookie);
+    }
+
+    void end_getUserInfo(::Forum::UserInfo& __p_user_info, const ::Ice::AsyncResultPtr&);
+    
+private:
+
+    void getUserInfo(::Ice::Int, ::Forum::UserInfo&, const ::Ice::Context*);
+    ::Ice::AsyncResultPtr begin_getUserInfo(::Ice::Int, const ::Ice::Context*, const ::IceInternal::CallbackBasePtr&, const ::Ice::LocalObjectPtr& __cookie = 0);
     
 public:
     
@@ -296,6 +477,9 @@ public:
     virtual void sayHello(const ::std::string&, const ::Ice::Current& = ::Ice::Current()) = 0;
     ::Ice::DispatchStatus ___sayHello(::IceInternal::Incoming&, const ::Ice::Current&);
 
+    virtual void getUserInfo(::Ice::Int, ::Forum::UserInfo&, const ::Ice::Current& = ::Ice::Current()) = 0;
+    ::Ice::DispatchStatus ___getUserInfo(::IceInternal::Incoming&, const ::Ice::Current&);
+
     virtual ::Ice::DispatchStatus __dispatch(::IceInternal::Incoming&, const ::Ice::Current&);
 
 protected:
@@ -400,6 +584,110 @@ template<class T, typename CT> Callback_ForumInterface_sayHelloPtr
 newCallback_ForumInterface_sayHello(T* instance, void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
 {
     return new Callback_ForumInterface_sayHello<T, CT>(instance, 0, excb, sentcb);
+}
+
+template<class T>
+class CallbackNC_ForumInterface_getUserInfo : public Callback_ForumInterface_getUserInfo_Base, public ::IceInternal::TwowayCallbackNC<T>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception&);
+    typedef void (T::*Sent)(bool);
+    typedef void (T::*Response)(const ::Forum::UserInfo&);
+
+    CallbackNC_ForumInterface_getUserInfo(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallbackNC<T>(obj, cb != 0, excb, sentcb), _response(cb)
+    {
+    }
+
+    virtual void completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::Forum::ForumInterfacePrx __proxy = ::Forum::ForumInterfacePrx::uncheckedCast(__result->getProxy());
+        ::Forum::UserInfo user_info;
+        try
+        {
+            __proxy->end_getUserInfo(user_info, __result);
+        }
+        catch(const ::Ice::Exception& ex)
+        {
+            ::IceInternal::CallbackNC<T>::exception(__result, ex);
+            return;
+        }
+        if(_response)
+        {
+            (::IceInternal::CallbackNC<T>::_callback.get()->*_response)(user_info);
+        }
+    }
+
+    private:
+
+    Response _response;
+};
+
+template<class T> Callback_ForumInterface_getUserInfoPtr
+newCallback_ForumInterface_getUserInfo(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Forum::UserInfo&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_ForumInterface_getUserInfo<T>(instance, cb, excb, sentcb);
+}
+
+template<class T> Callback_ForumInterface_getUserInfoPtr
+newCallback_ForumInterface_getUserInfo(T* instance, void (T::*cb)(const ::Forum::UserInfo&), void (T::*excb)(const ::Ice::Exception&), void (T::*sentcb)(bool) = 0)
+{
+    return new CallbackNC_ForumInterface_getUserInfo<T>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT>
+class Callback_ForumInterface_getUserInfo : public Callback_ForumInterface_getUserInfo_Base, public ::IceInternal::TwowayCallback<T, CT>
+{
+public:
+
+    typedef IceUtil::Handle<T> TPtr;
+
+    typedef void (T::*Exception)(const ::Ice::Exception& , const CT&);
+    typedef void (T::*Sent)(bool , const CT&);
+    typedef void (T::*Response)(const ::Forum::UserInfo&, const CT&);
+
+    Callback_ForumInterface_getUserInfo(const TPtr& obj, Response cb, Exception excb, Sent sentcb)
+        : ::IceInternal::TwowayCallback<T, CT>(obj, cb != 0, excb, sentcb), _response(cb)
+    {
+    }
+
+    virtual void completed(const ::Ice::AsyncResultPtr& __result) const
+    {
+        ::Forum::ForumInterfacePrx __proxy = ::Forum::ForumInterfacePrx::uncheckedCast(__result->getProxy());
+        ::Forum::UserInfo user_info;
+        try
+        {
+            __proxy->end_getUserInfo(user_info, __result);
+        }
+        catch(const ::Ice::Exception& ex)
+        {
+            ::IceInternal::Callback<T, CT>::exception(__result, ex);
+            return;
+        }
+        if(_response)
+        {
+            (::IceInternal::Callback<T, CT>::_callback.get()->*_response)(user_info, CT::dynamicCast(__result->getCookie()));
+        }
+    }
+
+    private:
+
+    Response _response;
+};
+
+template<class T, typename CT> Callback_ForumInterface_getUserInfoPtr
+newCallback_ForumInterface_getUserInfo(const IceUtil::Handle<T>& instance, void (T::*cb)(const ::Forum::UserInfo&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_ForumInterface_getUserInfo<T, CT>(instance, cb, excb, sentcb);
+}
+
+template<class T, typename CT> Callback_ForumInterface_getUserInfoPtr
+newCallback_ForumInterface_getUserInfo(T* instance, void (T::*cb)(const ::Forum::UserInfo&, const CT&), void (T::*excb)(const ::Ice::Exception&, const CT&), void (T::*sentcb)(bool, const CT&) = 0)
+{
+    return new Callback_ForumInterface_getUserInfo<T, CT>(instance, cb, excb, sentcb);
 }
 
 }

@@ -17,7 +17,8 @@ add_custom_command(OUTPUT "${PROJECT_SOURCE_DIR}/interface/Forum.cpp" COMMAND
 
 # 链接库
 link_directories(
-    "/usr/local/Ice-3.6.1/lib64"
+    #"/usr/local/Ice-3.6.1/lib64"
+    "/usr/local/Ice-3.6.1/lib64/c++11/"
 )
 
 # 头文件
