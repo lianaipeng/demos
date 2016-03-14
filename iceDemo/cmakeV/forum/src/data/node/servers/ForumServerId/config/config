@@ -1,0 +1,14 @@
+# Configuration file (03/04/16 10:23:24.907)
+
+# Server configuration
+Ice.Admin.ServerId=ForumServerId
+Ice.Admin.Endpoints=tcp -h localhost
+Ice.ProgramName=ForumServerId
+# Object adapter ForumAdapter
+ForumAdapter.Endpoints=tcp
+ForumAdapter.AdapterId=ForumAdapter
+# Server descriptor properties
+Ice.Trace.Network=1
+Ice.StdErr=./data/log/ForumServerId.err
+Ice.StdOut=./data/log/ForumServerId.out
+Ice.Default.Locator=IceGrid/Locator:tcp -p 50612
