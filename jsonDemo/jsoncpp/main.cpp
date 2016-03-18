@@ -55,10 +55,12 @@ int main(int argc,char **argv){
 
 
 
-    strWrite = "{\"category_id\":104,\"content\":\"嘉宾\",\"has_img\":1,\"hot_display\":1,\"id\":129975,\"img_id\":0,\"img_lock\":1,\"ip\":\"61.148.244.234\",\"is_display\":1,\"is_favor\":0,\"is_forbidden\":0,\"is_top\":0,\"main_thread_id\":0,\"platform\":0,\"recommend\":0,\"review\":0,\"sku_num\":0,\"tags\":\"88\",\"title\":\"非常完美\",\"user_id\":2758285,\"img_list\":[1,2,3]}";
+    //strWrite = "{\"category_id\":104,\"content\":\"嘉宾\",\"has_img\":1,\"hot_display\":1,\"id\":129975,\"img_id\":0,\"img_lock\":1,\"ip\":\"61.148.244.234\",\"is_display\":1,\"is_favor\":0,\"is_forbidden\":0,\"is_top\":0,\"main_thread_id\":0,\"platform\":0,\"recommend\":0,\"review\":0,\"sku_num\":0,\"tags\":\"88\",\"title\":\"非常完美\",\"user_id\":2758285,\"img_list\":[1,2,3]}";
+    strWrite = "{\"CNY_USD\":0.15677,\"USD_CNY\":6.3788,\"CNY_KRW\":174.85574,\"KRW_CNY\":0.00572,\"USD_KRW\":1115.36982,\"KRW_USD\":0.0009,\"CNY_GBP\":0.10267,\"GBP_CN    Y\":9.7401,\"USD_GBP\":0.6549,\"GBP_USD\":1.52695,\"CNY_HKD\":1.21507,\"HKD_CNY\":0.823,\"USD_HKD\":7.75067,\"HKD_USD\":0.12902,\"CNY_JPY\":19.24446,\"JPY_CNY\":0.05196,\"USD_JPY\":122.75658,\"JPY_USD\":0.00815,\"CNY_AUD\":0.21893,\"AUD_CNY\":4.5676,\"USD_AUD\":1.39653,\"AUD_USD\":0.71606,\"CNY_EUR\":0.1453,\"EUR_CNY\":6.8822,\"USD_EUR\":0.92685,\"EUR_USD\":1.07892}";
     Json::Value requestObj;
     if(reader.parse(strWrite,requestObj)){
-        std::cout << "content:" << requestObj["content"].asString();
+        if(!requestObj["CNY_USD"].isNull() )
+            std::cout << "content:" << requestObj["CNY_USD"].asDouble() << std::endl;
     }
 
 	return 0;

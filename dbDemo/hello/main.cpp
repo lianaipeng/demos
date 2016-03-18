@@ -77,6 +77,8 @@ static acl::db_handle* open_mysql(void)
     const char* dbpass = "f0cf2a92516045024a0c99147b28f05b";  
     printf("adaddr:%s,dbname:%s,dbuser:%s,dbpass:%s\n",dbaddr,dbname,dbuser,dbpass);
 
+    acl::acl_cpp_init();
+    acl::log::stdout_open(true);
     acl::db_handle* db = new acl::db_mysql(dbaddr, dbname, dbuser, dbpass);
     printf("asdfasdfasdfasdf\n");
     
