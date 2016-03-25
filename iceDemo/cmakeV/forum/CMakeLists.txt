@@ -10,7 +10,7 @@ SET(CMAKE_CXX_COMPILER /opt/rh/devtoolset-2/root/usr/bin/g++)
 #message("PROJECT_SOURCE_DIR " "${PROJECT_SOURCE_DIR}/")
 
 # 生成ice文件
-add_custom_command(OUTPUT "${PROJECT_SOURCE_DIR}/interface/Forum.cpp" COMMAND
+add_custom_command( OUTPUT "${PROJECT_SOURCE_DIR}/interface/Forum.cpp" COMMAND
         slice2cpp "${PROJECT_SOURCE_DIR}/interface/Forum.ice" --underscore
         --output-dir "${PROJECT_SOURCE_DIR}/interface/" DEPENDS
         "${PROJECT_SOURCE_DIR}/interface/Forum.ice")
