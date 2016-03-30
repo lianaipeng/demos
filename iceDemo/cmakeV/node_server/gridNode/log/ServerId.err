@@ -1,0 +1,49 @@
+-- 03/30/16 15:30:33.842 ServerId: Network: listening for tcp connections
+   local address = 127.0.0.1:50685
+-- 03/30/16 15:30:33.842 ServerId: Network: published endpoints for object adapter `Ice.Admin':
+   tcp -h localhost -p 50685 -t 60000
+-- 03/30/16 15:30:33.843 ServerId: Network: accepting tcp connections at 127.0.0.1:50685
+-- 03/30/16 15:30:33.845 ServerId: Network: established tcp connection
+   local address = 127.0.0.1:40267
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:30:33.847 ServerId: Network: established tcp connection
+   local address = 192.168.1.224:27182
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:30:33.849 ServerId: Network: listening for tcp connections
+   local address = :::10874
+   local interfaces = 127.0.0.1, 192.168.1.224, ::1
+-- 03/30/16 15:30:33.849 ServerId: Network: published endpoints for object adapter `Adapter':
+   tcp -h 192.168.1.224 -p 10874 -t 60000
+-- 03/30/16 15:30:33.852 ServerId: Network: accepting tcp connections at :::10874
+-- 03/30/16 15:30:50.674 ServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:52592
+-- 03/30/16 15:30:50.676 ServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:52592
+-- 03/30/16 15:31:08.425 ServerId: Network: closed tcp connection
+   local address = 127.0.0.1:40267
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:31:18.848 ServerId: Network: closed tcp connection
+   local address = 192.168.1.224:27182
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:31:31.458 ServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:52852
+-- 03/30/16 15:31:31.460 ServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:52852
+-- 03/30/16 15:32:43.392 ServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:53333
+-- 03/30/16 15:32:43.394 ServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:10874
+   remote address = ::ffff:192.168.1.224:53333
+-- 03/30/16 15:42:59.617 ServerId: Network: accepted tcp connection
+   local address = 127.0.0.1:50685
+   remote address = 127.0.0.1:26116
+-- 03/30/16 15:42:59.618 ServerId: Network: stopping to accept tcp connections at 127.0.0.1:50685
+-- 03/30/16 15:42:59.620 ServerId: Network: stopping to accept tcp connections at :::10874
+-- 03/30/16 15:42:59.621 ServerId: Network: closed tcp connection
+   local address = 127.0.0.1:50685
+   remote address = 127.0.0.1:26116

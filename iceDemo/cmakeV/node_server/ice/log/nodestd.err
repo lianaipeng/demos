@@ -1,0 +1,12 @@
+Instance.cpp:1098: Ice::FileException:
+file exception: No such file or directory
+path: ./log/ServerId.out
+Instance.cpp:1098: Ice::FileException:
+file exception: No such file or directory
+path: ./log/ServerId.out
+Instance.cpp:1098: Ice::FileException:
+file exception: No such file or directory
+path: ./log/ServerId.out
+Instance.cpp:1098: Ice::FileException:
+file exception: No such file or directory
+path: ./log/ServerId.out

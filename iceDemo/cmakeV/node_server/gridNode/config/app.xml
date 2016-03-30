@@ -1,0 +1,10 @@
+<icegrid>
+    <application name="AppName">
+        <node name="ForumNodeName">
+            <server id="ServerId" pwd="/home/lianaipeng/demos/iceDemo/cmakeV/node_server/gridNode" exe="./server" activation="on-demand">
+                <adapter name="Adapter" id="Adapter" endpoints="tcp"/>
+                <property name="Ice.Trace.Network" value="1"/>
+            </server>
+        </node>
+    </application>
+</icegrid>

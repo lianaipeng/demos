@@ -1,0 +1,135 @@
+-- 03/30/16 15:08:38.229 ForumServerId: Network: listening for tcp connections
+   local address = 127.0.0.1:56710
+-- 03/30/16 15:08:38.229 ForumServerId: Network: published endpoints for object adapter `Ice.Admin':
+   tcp -h localhost -p 56710 -t 60000
+-- 03/30/16 15:08:38.230 ForumServerId: Network: accepting tcp connections at 127.0.0.1:56710
+-- 03/30/16 15:08:38.231 ForumServerId: Network: established tcp connection
+   local address = 127.0.0.1:32993
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:08:38.232 ForumServerId: Network: established tcp connection
+   local address = 192.168.1.224:19908
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:08:38.234 ForumServerId: Network: listening for tcp connections
+   local address = :::53735
+   local interfaces = 127.0.0.1, 192.168.1.224, ::1
+-- 03/30/16 15:08:38.234 ForumServerId: Network: published endpoints for object adapter `ForumAdapter':
+   tcp -h 192.168.1.224 -p 53735 -t 60000
+-- 03/30/16 15:08:38.237 ForumServerId: Network: accepting tcp connections at :::53735
+-- 03/30/16 15:09:13.185 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:32993
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:09:23.233 ForumServerId: Network: closed tcp connection
+   local address = 192.168.1.224:19908
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:10:20.775 ForumServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:25311
+-- 03/30/16 15:10:20.777 ForumServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:25311
+-- 03/30/16 15:11:13.074 ForumServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:25583
+-- 03/30/16 15:11:13.076 ForumServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:25583
+-- 03/30/16 15:26:24.099 ForumServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:30603
+-- 03/30/16 15:26:24.101 ForumServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:53735
+   remote address = ::ffff:192.168.1.224:30603
+-- 03/30/16 15:29:51.739 ForumServerId: Network: accepted tcp connection
+   local address = 127.0.0.1:56710
+   remote address = 127.0.0.1:56324
+-- 03/30/16 15:29:51.739 ForumServerId: Network: stopping to accept tcp connections at 127.0.0.1:56710
+-- 03/30/16 15:29:51.740 ForumServerId: Network: established tcp connection
+   local address = 192.168.1.224:26897
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:29:51.742 ForumServerId: Network: stopping to accept tcp connections at :::53735
+-- 03/30/16 15:29:51.742 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:56710
+   remote address = 127.0.0.1:56324
+-- 03/30/16 15:29:51.743 ForumServerId: Network: closed tcp connection
+   local address = 192.168.1.224:26897
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:31:42.985 ForumServerId: Network: listening for tcp connections
+   local address = 127.0.0.1:61374
+-- 03/30/16 15:31:42.985 ForumServerId: Network: published endpoints for object adapter `Ice.Admin':
+   tcp -h localhost -p 61374 -t 60000
+-- 03/30/16 15:31:42.985 ForumServerId: Network: accepting tcp connections at 127.0.0.1:61374
+-- 03/30/16 15:31:42.986 ForumServerId: Network: established tcp connection
+   local address = 127.0.0.1:40727
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:31:42.988 ForumServerId: Network: established tcp connection
+   local address = 192.168.1.224:27642
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:31:42.990 ForumServerId: Network: listening for tcp connections
+   local address = :::29428
+   local interfaces = 127.0.0.1, 192.168.1.224, ::1
+-- 03/30/16 15:31:42.990 ForumServerId: Network: published endpoints for object adapter `ForumAdapter':
+   tcp -h 192.168.1.224 -p 29428 -t 60000
+-- 03/30/16 15:31:42.993 ForumServerId: Network: accepting tcp connections at :::29428
+-- 03/30/16 15:32:16.457 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:40727
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:32:18.818 ForumServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:29428
+   remote address = ::ffff:192.168.1.224:16063
+-- 03/30/16 15:32:18.820 ForumServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:29428
+   remote address = ::ffff:192.168.1.224:16063
+-- 03/30/16 15:32:27.989 ForumServerId: Network: closed tcp connection
+   local address = 192.168.1.224:27642
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:33:51.899 ForumServerId: Network: accepted tcp connection
+   local address = 127.0.0.1:61374
+   remote address = 127.0.0.1:44851
+-- 03/30/16 15:33:51.899 ForumServerId: Network: stopping to accept tcp connections at 127.0.0.1:61374
+-- 03/30/16 15:33:51.900 ForumServerId: Network: established tcp connection
+   local address = 192.168.1.224:28486
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:33:51.901 ForumServerId: Network: stopping to accept tcp connections at :::29428
+-- 03/30/16 15:33:51.902 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:61374
+   remote address = 127.0.0.1:44851
+-- 03/30/16 15:33:51.902 ForumServerId: Network: closed tcp connection
+   local address = 192.168.1.224:28486
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:33:58.068 ForumServerId: Network: listening for tcp connections
+   local address = 127.0.0.1:62520
+-- 03/30/16 15:33:58.069 ForumServerId: Network: published endpoints for object adapter `Ice.Admin':
+   tcp -h localhost -p 62520 -t 60000
+-- 03/30/16 15:33:58.069 ForumServerId: Network: accepting tcp connections at 127.0.0.1:62520
+-- 03/30/16 15:33:58.070 ForumServerId: Network: established tcp connection
+   local address = 127.0.0.1:41614
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:33:58.072 ForumServerId: Network: established tcp connection
+   local address = 192.168.1.224:28529
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:33:58.073 ForumServerId: Network: listening for tcp connections
+   local address = :::57613
+   local interfaces = 127.0.0.1, 192.168.1.224, ::1
+-- 03/30/16 15:33:58.074 ForumServerId: Network: published endpoints for object adapter `ForumAdapter':
+   tcp -h 192.168.1.224 -p 57613 -t 60000
+-- 03/30/16 15:33:58.076 ForumServerId: Network: accepting tcp connections at :::57613
+-- 03/30/16 15:34:00.519 ForumServerId: Network: accepted tcp connection
+   local address = ::ffff:192.168.1.224:57613
+   remote address = ::ffff:192.168.1.224:21066
+-- 03/30/16 15:34:00.520 ForumServerId: Network: closed tcp connection
+   local address = ::ffff:192.168.1.224:57613
+   remote address = ::ffff:192.168.1.224:21066
+-- 03/30/16 15:34:36.890 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:41614
+   remote address = 127.0.0.1:50612
+-- 03/30/16 15:34:36.900 ForumServerId: Network: closed tcp connection
+   local address = 192.168.1.224:28529
+   remote address = 192.168.1.224:25834
+-- 03/30/16 15:42:59.617 ForumServerId: Network: accepted tcp connection
+   local address = 127.0.0.1:62520
+   remote address = 127.0.0.1:41252
+-- 03/30/16 15:42:59.617 ForumServerId: Network: stopping to accept tcp connections at 127.0.0.1:62520
+-- 03/30/16 15:42:59.619 ForumServerId: Network: stopping to accept tcp connections at :::57613
+-- 03/30/16 15:42:59.620 ForumServerId: Network: closed tcp connection
+   local address = 127.0.0.1:62520
+   remote address = 127.0.0.1:41252
