@@ -12,6 +12,15 @@ int main(int argc, char* argv[]) {
     // compatible with the version of the headers we compiled against.
     GOOGLE_PROTOBUF_VERIFY_VERSION;
    
+    tutorial::IdList id_list;
+    id_list.add_list(10);
+    id_list.add_list(11);
+    id_list.add_list(12);
+    for(int i=0; i < id_list.list_size(); i++){
+        cout << "asdasd:" << id_list.list(i) << endl;
+    }
+
+    cout << "########################################A " <<endl;
     // 写消息
     tutorial::Person person;
     person.set_id(111);
