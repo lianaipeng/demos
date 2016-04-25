@@ -95,6 +95,12 @@ int main(int argc,char **argv){
    
     Json::Value vecObj;
     for(auto item : json_vec){
+        if(item.isMember("id")){
+            std::cout << "has member" << std::endl;
+        }
+        if(item.isMember("idss")){
+            std::cout << "no has member" << std::endl;
+        }
         vecObj.append(item);
     }
     std::string vec_str = writer.write(vecObj);
