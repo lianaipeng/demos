@@ -29,7 +29,7 @@ int main(){
     string g_mq_web_username = "admin";
     string g_mq_web_passwd = "admin";
     string g_mq_web_queuename = "nidaye_queuename1";
-    string g_mq_web_binding_key = "nidaye_bindingkey";
+    string g_mq_web_binding_key = "nidaye_bindingkey1";
     MessageReader* msgReader = NULL;
     msgReader = new MessageReader(g_mq_web_host, g_mq_web_port,g_mq_web_username,g_mq_web_passwd, g_mq_web_queuename,g_mq_web_binding_key);
     if(msgReader->init() != 0){    
