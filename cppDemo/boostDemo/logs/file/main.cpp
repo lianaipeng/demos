@@ -1,0 +1,22 @@
+
+#include "log.h"
+#include <string>
+
+int main(int, char*[]){
+	log_init("test",log_level::info);
+	
+	/*
+	BOOST_LOG_TRIVIAL(trace) << "A trace severity message";
+	BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
+	BOOST_LOG_TRIVIAL(info) << "An informational severity message";
+	BOOST_LOG_TRIVIAL(warning) << "A warning severity message";
+	BOOST_LOG_TRIVIAL(error) << "An error severity message";
+	BOOST_LOG_TRIVIAL(fatal) << "A fatal severity message";
+	*/
+	
+	BLT_W << "hello" ;	
+	BOOST_LOG_TRIVIAL(debug) << "A debug severity message";
+	BOOST_LOG_TRIVIAL(warning) << "A warning severity message";
+
+	return 0;
+}
