@@ -1,5 +1,9 @@
 
 # protobuf安装
+http://blog.csdn.net/huguoping830623/article/details/45482725
+最新可用
+
+
 官方github下载release版本 2.6.1 
 
 安装步骤在这里:

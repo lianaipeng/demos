@@ -8,7 +8,7 @@ template <class Type> class Queue;
 // 模板输出函数
 template <class T> std::ostream& operator<< (std::ostream&, const Queue<T>&);
 // 模板函数
-template <class Type> int compare2(const Type& ,const Type&);
+template <class Type> static int compare2(const Type& ,const Type&);
 
 
 template <class Type> class QueueItem{
